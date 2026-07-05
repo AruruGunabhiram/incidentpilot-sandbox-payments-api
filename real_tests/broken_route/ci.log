@@ -1,0 +1,399 @@
+test	Set up job	﻿2026-07-05T04:12:15.5456414Z Current runner version: '2.335.1'
+test	Set up job	2026-07-05T04:12:15.5486785Z ##[group]Runner Image Provisioner
+test	Set up job	2026-07-05T04:12:15.5488098Z Hosted Compute Agent
+test	Set up job	2026-07-05T04:12:15.5488931Z Version: 20260624.560
+test	Set up job	2026-07-05T04:12:15.5489597Z Commit: 925d229a51159bc391ae97e54a2dd1fe20af789d
+test	Set up job	2026-07-05T04:12:15.5490393Z Build Date: 2026-06-24T18:26:47Z
+test	Set up job	2026-07-05T04:12:15.5491108Z Worker ID: {e82d6633-2212-4296-9c92-43445bc107f2}
+test	Set up job	2026-07-05T04:12:15.5492201Z Azure Region: centralus
+test	Set up job	2026-07-05T04:12:15.5493047Z ##[endgroup]
+test	Set up job	2026-07-05T04:12:15.5495040Z ##[group]Operating System
+test	Set up job	2026-07-05T04:12:15.5495696Z Ubuntu
+test	Set up job	2026-07-05T04:12:15.5496355Z 24.04.4
+test	Set up job	2026-07-05T04:12:15.5496958Z LTS
+test	Set up job	2026-07-05T04:12:15.5497526Z ##[endgroup]
+test	Set up job	2026-07-05T04:12:15.5498105Z ##[group]Runner Image
+test	Set up job	2026-07-05T04:12:15.5498727Z Image: ubuntu-24.04
+test	Set up job	2026-07-05T04:12:15.5499349Z Version: 20260628.225.1
+test	Set up job	2026-07-05T04:12:15.5500468Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260628.225/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-07-05T04:12:15.5502551Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260628.225
+test	Set up job	2026-07-05T04:12:15.5503554Z ##[endgroup]
+test	Set up job	2026-07-05T04:12:15.5505167Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-07-05T04:12:15.5507514Z Contents: read
+test	Set up job	2026-07-05T04:12:15.5508211Z Metadata: read
+test	Set up job	2026-07-05T04:12:15.5508854Z Packages: read
+test	Set up job	2026-07-05T04:12:15.5509430Z ##[endgroup]
+test	Set up job	2026-07-05T04:12:15.5511733Z Secret source: Actions
+test	Set up job	2026-07-05T04:12:15.5512821Z Prepare workflow directory
+test	Set up job	2026-07-05T04:12:15.5851494Z Prepare all required actions
+test	Set up job	2026-07-05T04:12:15.5890679Z Getting action download info
+test	Set up job	2026-07-05T04:12:15.8465212Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+test	Set up job	2026-07-05T04:12:15.9187110Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+test	Set up job	2026-07-05T04:12:16.2292262Z Complete job name: test
+test	Checkout repo	﻿2026-07-05T04:12:16.3009894Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+test	Checkout repo	2026-07-05T04:12:16.3018966Z ##[group]Run actions/checkout@v4
+test	Checkout repo	2026-07-05T04:12:16.3019671Z with:
+test	Checkout repo	2026-07-05T04:12:16.3020269Z   repository: AruruGunabhiram/incidentpilot-sandbox-payments-api
+test	Checkout repo	2026-07-05T04:12:16.3024819Z   token: ***
+test	Checkout repo	2026-07-05T04:12:16.3025262Z   ssh-strict: true
+test	Checkout repo	2026-07-05T04:12:16.3025706Z   ssh-user: git
+test	Checkout repo	2026-07-05T04:12:16.3026146Z   persist-credentials: true
+test	Checkout repo	2026-07-05T04:12:16.3026626Z   clean: true
+test	Checkout repo	2026-07-05T04:12:16.3027065Z   sparse-checkout-cone-mode: true
+test	Checkout repo	2026-07-05T04:12:16.3027576Z   fetch-depth: 1
+test	Checkout repo	2026-07-05T04:12:16.3028004Z   fetch-tags: false
+test	Checkout repo	2026-07-05T04:12:16.3028441Z   show-progress: true
+test	Checkout repo	2026-07-05T04:12:16.3028878Z   lfs: false
+test	Checkout repo	2026-07-05T04:12:16.3029333Z   submodules: false
+test	Checkout repo	2026-07-05T04:12:16.3029780Z   set-safe-directory: true
+test	Checkout repo	2026-07-05T04:12:16.3030463Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.4052628Z Syncing repository: AruruGunabhiram/incidentpilot-sandbox-payments-api
+test	Checkout repo	2026-07-05T04:12:16.4055665Z ##[group]Getting Git version info
+test	Checkout repo	2026-07-05T04:12:16.4057407Z Working directory is '/home/runner/work/incidentpilot-sandbox-payments-api/incidentpilot-sandbox-payments-api'
+test	Checkout repo	2026-07-05T04:12:16.4058968Z [command]/usr/bin/git version
+test	Checkout repo	2026-07-05T04:12:16.4112598Z git version 2.54.0
+test	Checkout repo	2026-07-05T04:12:16.4134593Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.4150205Z Temporarily overriding HOME='/home/runner/work/_temp/15c7c0fa-1ab1-41e6-8ea0-6470f4657eb0' before making global git config changes
+test	Checkout repo	2026-07-05T04:12:16.4152098Z Adding repository directory to the temporary git global config as a safe directory
+test	Checkout repo	2026-07-05T04:12:16.4155946Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/incidentpilot-sandbox-payments-api/incidentpilot-sandbox-payments-api
+test	Checkout repo	2026-07-05T04:12:16.4204253Z Deleting the contents of '/home/runner/work/incidentpilot-sandbox-payments-api/incidentpilot-sandbox-payments-api'
+test	Checkout repo	2026-07-05T04:12:16.4216074Z ##[group]Initializing the repository
+test	Checkout repo	2026-07-05T04:12:16.4217807Z [command]/usr/bin/git init /home/runner/work/incidentpilot-sandbox-payments-api/incidentpilot-sandbox-payments-api
+test	Checkout repo	2026-07-05T04:12:16.4305318Z hint: Using 'master' as the name for the initial branch. This default branch name
+test	Checkout repo	2026-07-05T04:12:16.4306989Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test	Checkout repo	2026-07-05T04:12:16.4308472Z hint: to use in all of your new repositories, which will suppress this warning,
+test	Checkout repo	2026-07-05T04:12:16.4309675Z hint: call:
+test	Checkout repo	2026-07-05T04:12:16.4310584Z hint:
+test	Checkout repo	2026-07-05T04:12:16.4311350Z hint: 	git config --global init.defaultBranch <name>
+test	Checkout repo	2026-07-05T04:12:16.4312300Z hint:
+test	Checkout repo	2026-07-05T04:12:16.4313216Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test	Checkout repo	2026-07-05T04:12:16.4314898Z hint: 'development'. The just-created branch can be renamed via this command:
+test	Checkout repo	2026-07-05T04:12:16.4316109Z hint:
+test	Checkout repo	2026-07-05T04:12:16.4316756Z hint: 	git branch -m <name>
+test	Checkout repo	2026-07-05T04:12:16.4317497Z hint:
+test	Checkout repo	2026-07-05T04:12:16.4318417Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test	Checkout repo	2026-07-05T04:12:16.4320553Z Initialized empty Git repository in /home/runner/work/incidentpilot-sandbox-payments-api/incidentpilot-sandbox-payments-api/.git/
+test	Checkout repo	2026-07-05T04:12:16.4324012Z [command]/usr/bin/git remote add origin https://github.com/AruruGunabhiram/incidentpilot-sandbox-payments-api
+test	Checkout repo	2026-07-05T04:12:16.4358482Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.4359492Z ##[group]Disabling automatic garbage collection
+test	Checkout repo	2026-07-05T04:12:16.4362539Z [command]/usr/bin/git config --local gc.auto 0
+test	Checkout repo	2026-07-05T04:12:16.4396401Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.4397267Z ##[group]Setting up auth
+test	Checkout repo	2026-07-05T04:12:16.4404096Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Checkout repo	2026-07-05T04:12:16.4441660Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Checkout repo	2026-07-05T04:12:16.4795379Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Checkout repo	2026-07-05T04:12:16.4827921Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Checkout repo	2026-07-05T04:12:16.5092952Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Checkout repo	2026-07-05T04:12:16.5133179Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Checkout repo	2026-07-05T04:12:16.5406345Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Checkout repo	2026-07-05T04:12:16.5449501Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.5450763Z ##[group]Fetching the repository
+test	Checkout repo	2026-07-05T04:12:16.5460877Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7c988263a0172a94884d1b1448ec874a3a4953b5:refs/remotes/origin/incidentpilot-broken-route
+test	Checkout repo	2026-07-05T04:12:16.9756085Z From https://github.com/AruruGunabhiram/incidentpilot-sandbox-payments-api
+test	Checkout repo	2026-07-05T04:12:16.9758184Z  * [new ref]         7c988263a0172a94884d1b1448ec874a3a4953b5 -> origin/incidentpilot-broken-route
+test	Checkout repo	2026-07-05T04:12:16.9788793Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.9789918Z ##[group]Determining the checkout info
+test	Checkout repo	2026-07-05T04:12:16.9791900Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:16.9798420Z [command]/usr/bin/git sparse-checkout disable
+test	Checkout repo	2026-07-05T04:12:16.9848907Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Checkout repo	2026-07-05T04:12:16.9882225Z ##[group]Checking out the ref
+test	Checkout repo	2026-07-05T04:12:16.9888221Z [command]/usr/bin/git checkout --progress --force -B incidentpilot-broken-route refs/remotes/origin/incidentpilot-broken-route
+test	Checkout repo	2026-07-05T04:12:17.0098390Z Switched to a new branch 'incidentpilot-broken-route'
+test	Checkout repo	2026-07-05T04:12:17.0100456Z branch 'incidentpilot-broken-route' set up to track 'origin/incidentpilot-broken-route'.
+test	Checkout repo	2026-07-05T04:12:17.0108169Z ##[endgroup]
+test	Checkout repo	2026-07-05T04:12:17.0157334Z [command]/usr/bin/git log -1 --format=%H
+test	Checkout repo	2026-07-05T04:12:17.0187613Z 7c988263a0172a94884d1b1448ec874a3a4953b5
+test	Set up Python	﻿2026-07-05T04:12:17.0462198Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+test	Set up Python	2026-07-05T04:12:17.0465392Z ##[group]Run actions/setup-python@v5
+test	Set up Python	2026-07-05T04:12:17.0465917Z with:
+test	Set up Python	2026-07-05T04:12:17.0466317Z   python-version: 3.11
+test	Set up Python	2026-07-05T04:12:17.0466769Z   check-latest: false
+test	Set up Python	2026-07-05T04:12:17.0470808Z   token: ***
+test	Set up Python	2026-07-05T04:12:17.0471234Z   update-environment: true
+test	Set up Python	2026-07-05T04:12:17.0471714Z   allow-prereleases: false
+test	Set up Python	2026-07-05T04:12:17.0472193Z   freethreaded: false
+test	Set up Python	2026-07-05T04:12:17.0472621Z ##[endgroup]
+test	Set up Python	2026-07-05T04:12:17.1803235Z ##[group]Installed versions
+test	Set up Python	2026-07-05T04:12:17.1887328Z (node:2282) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Set up Python	2026-07-05T04:12:17.1888676Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Set up Python	2026-07-05T04:12:17.1889795Z Successfully set up CPython (3.11.15)
+test	Set up Python	2026-07-05T04:12:17.1890643Z ##[endgroup]
+test	Install dependencies	﻿2026-07-05T04:12:17.2071393Z ##[group]Run python -m pip install --upgrade pip
+test	Install dependencies	2026-07-05T04:12:17.2072221Z [36;1mpython -m pip install --upgrade pip[0m
+test	Install dependencies	2026-07-05T04:12:17.2072872Z [36;1mpip install -r requirements.txt[0m
+test	Install dependencies	2026-07-05T04:12:17.2253142Z shell: /usr/bin/bash -e {0}
+test	Install dependencies	2026-07-05T04:12:17.2253791Z env:
+test	Install dependencies	2026-07-05T04:12:17.2254667Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Install dependencies	2026-07-05T04:12:17.2255512Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+test	Install dependencies	2026-07-05T04:12:17.2256368Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Install dependencies	2026-07-05T04:12:17.2257092Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Install dependencies	2026-07-05T04:12:17.2257817Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Install dependencies	2026-07-05T04:12:17.2258540Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+test	Install dependencies	2026-07-05T04:12:17.2259164Z ##[endgroup]
+test	Install dependencies	2026-07-05T04:12:18.1738189Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages (26.1.2)
+test	Install dependencies	2026-07-05T04:12:19.4038672Z Collecting fastapi (from -r requirements.txt (line 1))
+test	Install dependencies	2026-07-05T04:12:19.4737323Z   Downloading fastapi-0.139.0-py3-none-any.whl.metadata (26 kB)
+test	Install dependencies	2026-07-05T04:12:19.6152273Z Collecting pydantic (from -r requirements.txt (line 3))
+test	Install dependencies	2026-07-05T04:12:19.6263283Z   Downloading pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+test	Install dependencies	2026-07-05T04:12:19.6701102Z Collecting pydantic-settings (from -r requirements.txt (line 4))
+test	Install dependencies	2026-07-05T04:12:19.6879360Z   Downloading pydantic_settings-2.14.2-py3-none-any.whl.metadata (3.4 kB)
+test	Install dependencies	2026-07-05T04:12:19.7088687Z Collecting python-dotenv (from -r requirements.txt (line 5))
+test	Install dependencies	2026-07-05T04:12:19.7196286Z   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+test	Install dependencies	2026-07-05T04:12:19.7643178Z Collecting pytest (from -r requirements.txt (line 6))
+test	Install dependencies	2026-07-05T04:12:19.7751737Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+test	Install dependencies	2026-07-05T04:12:19.8064495Z Collecting httpx (from -r requirements.txt (line 7))
+test	Install dependencies	2026-07-05T04:12:19.8172889Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+test	Install dependencies	2026-07-05T04:12:19.8670255Z Collecting PyYAML (from -r requirements.txt (line 8))
+test	Install dependencies	2026-07-05T04:12:19.8778636Z   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+test	Install dependencies	2026-07-05T04:12:19.9263441Z Collecting rich (from -r requirements.txt (line 9))
+test	Install dependencies	2026-07-05T04:12:19.9371138Z   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+test	Install dependencies	2026-07-05T04:12:19.9762475Z Collecting uvicorn[standard] (from -r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:19.9869490Z   Downloading uvicorn-0.50.0-py3-none-any.whl.metadata (6.7 kB)
+test	Install dependencies	2026-07-05T04:12:20.0245151Z Collecting starlette>=0.46.0 (from fastapi->-r requirements.txt (line 1))
+test	Install dependencies	2026-07-05T04:12:20.0353099Z   Downloading starlette-1.3.1-py3-none-any.whl.metadata (6.4 kB)
+test	Install dependencies	2026-07-05T04:12:20.0646039Z Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+test	Install dependencies	2026-07-05T04:12:20.0751881Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+test	Install dependencies	2026-07-05T04:12:20.0972540Z Collecting typing-inspection>=0.4.2 (from fastapi->-r requirements.txt (line 1))
+test	Install dependencies	2026-07-05T04:12:20.1078281Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+test	Install dependencies	2026-07-05T04:12:20.1294831Z Collecting annotated-doc>=0.0.2 (from fastapi->-r requirements.txt (line 1))
+test	Install dependencies	2026-07-05T04:12:20.1400756Z   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+test	Install dependencies	2026-07-05T04:12:20.1689689Z Collecting click>=7.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:20.1802228Z   Downloading click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+test	Install dependencies	2026-07-05T04:12:20.2026567Z Collecting h11>=0.8 (from uvicorn[standard]->-r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:20.2132430Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+test	Install dependencies	2026-07-05T04:12:20.2587157Z Collecting httptools>=0.8.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:20.2697751Z   Downloading httptools-0.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+test	Install dependencies	2026-07-05T04:12:20.3209351Z Collecting uvloop>=0.15.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:20.3318887Z   Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+test	Install dependencies	2026-07-05T04:12:20.4221801Z Collecting watchfiles>=0.20 (from uvicorn[standard]->-r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:20.4331613Z   Downloading watchfiles-1.2.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+test	Install dependencies	2026-07-05T04:12:20.5473002Z Collecting websockets>=11.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+test	Install dependencies	2026-07-05T04:12:20.5581955Z   Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+test	Install dependencies	2026-07-05T04:12:20.5847059Z Collecting annotated-types>=0.6.0 (from pydantic->-r requirements.txt (line 3))
+test	Install dependencies	2026-07-05T04:12:20.5964298Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+test	Install dependencies	2026-07-05T04:12:21.2682297Z Collecting pydantic-core==2.46.4 (from pydantic->-r requirements.txt (line 3))
+test	Install dependencies	2026-07-05T04:12:21.2791568Z   Downloading pydantic_core-2.46.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+test	Install dependencies	2026-07-05T04:12:21.3071604Z Collecting iniconfig>=1.0.1 (from pytest->-r requirements.txt (line 6))
+test	Install dependencies	2026-07-05T04:12:21.3176040Z   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+test	Install dependencies	2026-07-05T04:12:21.3424046Z Collecting packaging>=22 (from pytest->-r requirements.txt (line 6))
+test	Install dependencies	2026-07-05T04:12:21.3529053Z   Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+test	Install dependencies	2026-07-05T04:12:21.3759471Z Collecting pluggy<2,>=1.5 (from pytest->-r requirements.txt (line 6))
+test	Install dependencies	2026-07-05T04:12:21.3866516Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+test	Install dependencies	2026-07-05T04:12:21.4150491Z Collecting pygments>=2.7.2 (from pytest->-r requirements.txt (line 6))
+test	Install dependencies	2026-07-05T04:12:21.4258172Z   Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+test	Install dependencies	2026-07-05T04:12:21.4550130Z Collecting anyio (from httpx->-r requirements.txt (line 7))
+test	Install dependencies	2026-07-05T04:12:21.4655940Z   Downloading anyio-4.14.1-py3-none-any.whl.metadata (4.6 kB)
+test	Install dependencies	2026-07-05T04:12:21.4936647Z Collecting certifi (from httpx->-r requirements.txt (line 7))
+test	Install dependencies	2026-07-05T04:12:21.5043313Z   Downloading certifi-2026.6.17-py3-none-any.whl.metadata (2.5 kB)
+test	Install dependencies	2026-07-05T04:12:21.5306669Z Collecting httpcore==1.* (from httpx->-r requirements.txt (line 7))
+test	Install dependencies	2026-07-05T04:12:21.5414072Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+test	Install dependencies	2026-07-05T04:12:21.5672389Z Collecting idna (from httpx->-r requirements.txt (line 7))
+test	Install dependencies	2026-07-05T04:12:21.5777456Z   Downloading idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+test	Install dependencies	2026-07-05T04:12:21.6039283Z Collecting markdown-it-py>=2.2.0 (from rich->-r requirements.txt (line 9))
+test	Install dependencies	2026-07-05T04:12:21.6144866Z   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+test	Install dependencies	2026-07-05T04:12:21.6414036Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->-r requirements.txt (line 9))
+test	Install dependencies	2026-07-05T04:12:21.6519783Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+test	Install dependencies	2026-07-05T04:12:21.6822524Z Downloading fastapi-0.139.0-py3-none-any.whl (130 kB)
+test	Install dependencies	2026-07-05T04:12:21.7038557Z Downloading uvicorn-0.50.0-py3-none-any.whl (72 kB)
+test	Install dependencies	2026-07-05T04:12:21.7195488Z Downloading pydantic-2.13.4-py3-none-any.whl (472 kB)
+test	Install dependencies	2026-07-05T04:12:21.7644344Z Downloading pydantic_core-2.46.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+test	Install dependencies	2026-07-05T04:12:21.8701386Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 20.6 MB/s  0:00:00
+test	Install dependencies	2026-07-05T04:12:21.8812339Z Downloading pydantic_settings-2.14.2-py3-none-any.whl (61 kB)
+test	Install dependencies	2026-07-05T04:12:21.8940403Z Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+test	Install dependencies	2026-07-05T04:12:21.9067280Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+test	Install dependencies	2026-07-05T04:12:21.9313295Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+test	Install dependencies	2026-07-05T04:12:21.9438684Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+test	Install dependencies	2026-07-05T04:12:21.9572830Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+test	Install dependencies	2026-07-05T04:12:21.9708625Z Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+test	Install dependencies	2026-07-05T04:12:22.0008416Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 28.2 MB/s  0:00:00
+test	Install dependencies	2026-07-05T04:12:22.0113677Z Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+test	Install dependencies	2026-07-05T04:12:22.0329559Z Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+test	Install dependencies	2026-07-05T04:12:22.0687065Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 33.1 MB/s  0:00:00
+test	Install dependencies	2026-07-05T04:12:22.0795500Z Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+test	Install dependencies	2026-07-05T04:12:22.0921166Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+test	Install dependencies	2026-07-05T04:12:22.1047609Z Downloading click-8.4.2-py3-none-any.whl (119 kB)
+test	Install dependencies	2026-07-05T04:12:22.1188041Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+test	Install dependencies	2026-07-05T04:12:22.1314950Z Downloading httptools-0.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (464 kB)
+test	Install dependencies	2026-07-05T04:12:22.1538115Z Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+test	Install dependencies	2026-07-05T04:12:22.1664500Z Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+test	Install dependencies	2026-07-05T04:12:22.1796193Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+test	Install dependencies	2026-07-05T04:12:22.1927358Z Downloading packaging-26.2-py3-none-any.whl (100 kB)
+test	Install dependencies	2026-07-05T04:12:22.2061994Z Downloading starlette-1.3.1-py3-none-any.whl (73 kB)
+test	Install dependencies	2026-07-05T04:12:22.2195703Z Downloading anyio-4.14.1-py3-none-any.whl (124 kB)
+test	Install dependencies	2026-07-05T04:12:22.2340265Z Downloading idna-3.18-py3-none-any.whl (65 kB)
+test	Install dependencies	2026-07-05T04:12:22.2474152Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+test	Install dependencies	2026-07-05T04:12:22.2602495Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+test	Install dependencies	2026-07-05T04:12:22.2731879Z Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+test	Install dependencies	2026-07-05T04:12:22.3492737Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 49.9 MB/s  0:00:00
+test	Install dependencies	2026-07-05T04:12:22.3601939Z Downloading watchfiles-1.2.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+test	Install dependencies	2026-07-05T04:12:22.3779754Z Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+test	Install dependencies	2026-07-05T04:12:22.3916115Z Downloading certifi-2026.6.17-py3-none-any.whl (133 kB)
+test	Install dependencies	2026-07-05T04:12:22.4723573Z Installing collected packages: websockets, uvloop, typing-extensions, PyYAML, python-dotenv, pygments, pluggy, packaging, mdurl, iniconfig, idna, httptools, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic-core, markdown-it-py, httpcore, anyio, watchfiles, starlette, rich, pydantic, httpx, pydantic-settings, fastapi
+test	Install dependencies	2026-07-05T04:12:24.9305986Z 
+test	Install dependencies	2026-07-05T04:12:24.9326707Z Successfully installed PyYAML-6.0.3 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.14.1 certifi-2026.6.17 click-8.4.2 fastapi-0.139.0 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.28.1 idna-3.18 iniconfig-2.3.0 markdown-it-py-4.2.0 mdurl-0.1.2 packaging-26.2 pluggy-1.6.0 pydantic-2.13.4 pydantic-core-2.46.4 pydantic-settings-2.14.2 pygments-2.20.0 pytest-9.1.1 python-dotenv-1.2.2 rich-15.0.0 starlette-1.3.1 typing-extensions-4.16.0 typing-inspection-0.4.2 uvicorn-0.50.0 uvloop-0.22.1 watchfiles-1.2.0 websockets-16.0
+test	Run tests	﻿2026-07-05T04:12:25.0421167Z ##[group]Run pytest -q
+test	Run tests	2026-07-05T04:12:25.0421453Z [36;1mpytest -q[0m
+test	Run tests	2026-07-05T04:12:25.0458403Z shell: /usr/bin/bash -e {0}
+test	Run tests	2026-07-05T04:12:25.0458669Z env:
+test	Run tests	2026-07-05T04:12:25.0458945Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Run tests	2026-07-05T04:12:25.0459385Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+test	Run tests	2026-07-05T04:12:25.0459808Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Run tests	2026-07-05T04:12:25.0460184Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Run tests	2026-07-05T04:12:25.0460557Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+test	Run tests	2026-07-05T04:12:25.0460942Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+test	Run tests	2026-07-05T04:12:25.0461264Z ##[endgroup]
+test	Run tests	2026-07-05T04:12:27.8927949Z ..................................................F..................... [ 23%]
+test	Run tests	2026-07-05T04:12:28.1808359Z ........................................................................ [ 46%]
+test	Run tests	2026-07-05T04:12:28.5184771Z ........................................................................ [ 69%]
+test	Run tests	2026-07-05T04:12:28.7940968Z ........................................................................ [ 93%]
+test	Run tests	2026-07-05T04:12:28.8202507Z .....................                                                    [100%]
+test	Run tests	2026-07-05T04:12:28.8203499Z =================================== FAILURES ===================================
+test	Run tests	2026-07-05T04:12:28.8204823Z _____________________ test_unknown_user_should_return_404 ______________________
+test	Run tests	2026-07-05T04:12:28.8205280Z 
+test	Run tests	2026-07-05T04:12:28.8205546Z     def test_unknown_user_should_return_404() -> None:
+test	Run tests	2026-07-05T04:12:28.8207509Z         """Unknown users should be rejected instead of raising AttributeError."""
+test	Run tests	2026-07-05T04:12:28.8208160Z         payments = _load_demo_payments_module()
+test	Run tests	2026-07-05T04:12:28.8208567Z         app = FastAPI()
+test	Run tests	2026-07-05T04:12:28.8208916Z         app.include_router(payments.router)
+test	Run tests	2026-07-05T04:12:28.8209344Z         client = TestClient(app)
+test	Run tests	2026-07-05T04:12:28.8209688Z     
+test	Run tests	2026-07-05T04:12:28.8209988Z >       response = client.post(
+test	Run tests	2026-07-05T04:12:28.8210355Z             "/payments",
+test	Run tests	2026-07-05T04:12:28.8210816Z             json={"user_id": "does_not_exist", "amount": 1000, "currency": "USD"},
+test	Run tests	2026-07-05T04:12:28.8211324Z         )
+test	Run tests	2026-07-05T04:12:28.8211469Z 
+test	Run tests	2026-07-05T04:12:28.8211653Z tests/test_controlled_broken_payment_route.py:36: 
+test	Run tests	2026-07-05T04:12:28.8212158Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test	Run tests	2026-07-05T04:12:28.8212979Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/testclient.py:555: in post
+test	Run tests	2026-07-05T04:12:28.8213705Z     return super().post(
+test	Run tests	2026-07-05T04:12:28.8214513Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/httpx/_client.py:1144: in post
+test	Run tests	2026-07-05T04:12:28.8215196Z     return self.request(
+test	Run tests	2026-07-05T04:12:28.8215831Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/testclient.py:454: in request
+test	Run tests	2026-07-05T04:12:28.8216539Z     return super().request(
+test	Run tests	2026-07-05T04:12:28.8217178Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/httpx/_client.py:825: in request
+test	Run tests	2026-07-05T04:12:28.8218279Z     return self.send(request, auth=auth, follow_redirects=follow_redirects)
+test	Run tests	2026-07-05T04:12:28.8218872Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8219559Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/httpx/_client.py:914: in send
+test	Run tests	2026-07-05T04:12:28.8220247Z     response = self._send_handling_auth(
+test	Run tests	2026-07-05T04:12:28.8220973Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/httpx/_client.py:942: in _send_handling_auth
+test	Run tests	2026-07-05T04:12:28.8221719Z     response = self._send_handling_redirects(
+test	Run tests	2026-07-05T04:12:28.8222485Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/httpx/_client.py:979: in _send_handling_redirects
+test	Run tests	2026-07-05T04:12:28.8223309Z     response = self._send_single_request(request)
+test	Run tests	2026-07-05T04:12:28.8224116Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8224851Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/httpx/_client.py:1014: in _send_single_request
+test	Run tests	2026-07-05T04:12:28.8225644Z     response = transport.handle_request(request)
+test	Run tests	2026-07-05T04:12:28.8226066Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8226786Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/testclient.py:356: in handle_request
+test	Run tests	2026-07-05T04:12:28.8227523Z     raise exc
+test	Run tests	2026-07-05T04:12:28.8228148Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/testclient.py:353: in handle_request
+test	Run tests	2026-07-05T04:12:28.8228917Z     portal.call(self.app, scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8229619Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/anyio/from_thread.py:338: in call
+test	Run tests	2026-07-05T04:12:28.8230413Z     return cast(T_Retval, self.start_task_soon(func, *args).result())
+test	Run tests	2026-07-05T04:12:28.8230961Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8231645Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/concurrent/futures/_base.py:456: in result
+test	Run tests	2026-07-05T04:12:28.8232294Z     return self.__get_result()
+test	Run tests	2026-07-05T04:12:28.8232621Z            ^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8233219Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/concurrent/futures/_base.py:401: in __get_result
+test	Run tests	2026-07-05T04:12:28.8234031Z     raise self._exception
+test	Run tests	2026-07-05T04:12:28.8234673Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/anyio/from_thread.py:263: in _call_func
+test	Run tests	2026-07-05T04:12:28.8235391Z     retval = await retval_or_awaitable
+test	Run tests	2026-07-05T04:12:28.8235745Z              ^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8236425Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/applications.py:1163: in __call__
+test	Run tests	2026-07-05T04:12:28.8237184Z     await super().__call__(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8237942Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/applications.py:90: in __call__
+test	Run tests	2026-07-05T04:12:28.8238735Z     await self.middleware_stack(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8239535Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/middleware/errors.py:186: in __call__
+test	Run tests	2026-07-05T04:12:28.8240285Z     raise exc
+test	Run tests	2026-07-05T04:12:28.8240928Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/middleware/errors.py:164: in __call__
+test	Run tests	2026-07-05T04:12:28.8241698Z     await self.app(scope, receive, _send)
+test	Run tests	2026-07-05T04:12:28.8242480Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/middleware/exceptions.py:63: in __call__
+test	Run tests	2026-07-05T04:12:28.8243486Z     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8244550Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+test	Run tests	2026-07-05T04:12:28.8245318Z     raise exc
+test	Run tests	2026-07-05T04:12:28.8245965Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+test	Run tests	2026-07-05T04:12:28.8246956Z     await app(scope, receive, sender)
+test	Run tests	2026-07-05T04:12:28.8247756Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py:18: in __call__
+test	Run tests	2026-07-05T04:12:28.8248697Z     await self.app(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8249408Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/routing.py:660: in __call__
+test	Run tests	2026-07-05T04:12:28.8250171Z     await self.middleware_stack(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8250898Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:2683: in app
+test	Run tests	2026-07-05T04:12:28.8251613Z     await route.handle(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8252302Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:1753: in handle
+test	Run tests	2026-07-05T04:12:28.8253290Z     await self.original_router.handle(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8254226Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:2738: in handle
+test	Run tests	2026-07-05T04:12:28.8255016Z     await included_router._handle_selected(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8255842Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:1773: in _handle_selected
+test	Run tests	2026-07-05T04:12:28.8256624Z     await original_route.handle(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8257350Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:1264: in handle
+test	Run tests	2026-07-05T04:12:28.8258025Z     await app(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8258655Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:150: in app
+test	Run tests	2026-07-05T04:12:28.8259489Z     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+test	Run tests	2026-07-05T04:12:28.8260430Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+test	Run tests	2026-07-05T04:12:28.8261214Z     raise exc
+test	Run tests	2026-07-05T04:12:28.8261866Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+test	Run tests	2026-07-05T04:12:28.8262617Z     await app(scope, receive, sender)
+test	Run tests	2026-07-05T04:12:28.8263247Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:136: in app
+test	Run tests	2026-07-05T04:12:28.8264054Z     response = await f(request)
+test	Run tests	2026-07-05T04:12:28.8264375Z                ^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8264953Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:690: in app
+test	Run tests	2026-07-05T04:12:28.8265633Z     raw_response = await run_endpoint_function(
+test	Run tests	2026-07-05T04:12:28.8266402Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/routing.py:346: in run_endpoint_function
+test	Run tests	2026-07-05T04:12:28.8267236Z     return await run_in_threadpool(dependant.call, **values)
+test	Run tests	2026-07-05T04:12:28.8267708Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8268474Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/starlette/concurrency.py:34: in run_in_threadpool
+test	Run tests	2026-07-05T04:12:28.8269260Z     return await anyio.to_thread.run_sync(func)
+test	Run tests	2026-07-05T04:12:28.8269657Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8270314Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/anyio/to_thread.py:63: in run_sync
+test	Run tests	2026-07-05T04:12:28.8271095Z     return await get_async_backend().run_sync_in_worker_thread(
+test	Run tests	2026-07-05T04:12:28.8272000Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/anyio/_backends/_asyncio.py:2596: in run_sync_in_worker_thread
+test	Run tests	2026-07-05T04:12:28.8272809Z     return await future
+test	Run tests	2026-07-05T04:12:28.8273108Z            ^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8273722Z /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/anyio/_backends/_asyncio.py:1029: in run
+test	Run tests	2026-07-05T04:12:28.8274685Z     result = context.run(func, *args)
+test	Run tests	2026-07-05T04:12:28.8275234Z              ^^^^^^^^^^^^^^^^^^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8275639Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test	Run tests	2026-07-05T04:12:28.8275982Z 
+test	Run tests	2026-07-05T04:12:28.8276295Z request = PaymentRequest(user_id='does_not_exist', amount=1000, currency='USD')
+test	Run tests	2026-07-05T04:12:28.8276745Z 
+test	Run tests	2026-07-05T04:12:28.8276906Z     @router.post("/payments", status_code=201)
+test	Run tests	2026-07-05T04:12:28.8277383Z     def create_payment(request: PaymentRequest) -> dict:
+test	Run tests	2026-07-05T04:12:28.8277865Z         """Create a payment for the requesting user.
+test	Run tests	2026-07-05T04:12:28.8278265Z     
+test	Run tests	2026-07-05T04:12:28.8278700Z         Steps are kept on separate lines so the incident report can cite exact line
+test	Run tests	2026-07-05T04:12:28.8279256Z         numbers for the failure.
+test	Run tests	2026-07-05T04:12:28.8279588Z         """
+test	Run tests	2026-07-05T04:12:28.8279996Z         payment = Payment(amount=request.amount, currency=request.currency)
+test	Run tests	2026-07-05T04:12:28.8280702Z     
+test	Run tests	2026-07-05T04:12:28.8281106Z         user = get_user(request.user_id)          # may return None for unknown ids
+test	Run tests	2026-07-05T04:12:28.8281752Z >       payment.user_id = user.id                 # BUG: user can be None here
+test	Run tests	2026-07-05T04:12:28.8282238Z                           ^^^^^^^
+test	Run tests	2026-07-05T04:12:28.8282656Z E       AttributeError: 'NoneType' object has no attribute 'id'
+test	Run tests	2026-07-05T04:12:28.8283002Z 
+test	Run tests	2026-07-05T04:12:28.8283203Z demo/demo_repo/app/routes/payments.py:81: AttributeError
+test	Run tests	2026-07-05T04:12:28.8283720Z =============================== warnings summary ===============================
+test	Run tests	2026-07-05T04:12:28.8284632Z ../../../../../opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/testclient.py:1
+test	Run tests	2026-07-05T04:12:28.8286146Z   /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+test	Run tests	2026-07-05T04:12:28.8705098Z     from starlette.testclient import TestClient as TestClient  # noqa
+test	Run tests	2026-07-05T04:12:28.8705703Z 
+test	Run tests	2026-07-05T04:12:28.8706098Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+test	Run tests	2026-07-05T04:12:28.8706855Z =========================== short test summary info ============================
+test	Run tests	2026-07-05T04:12:28.8708101Z FAILED tests/test_controlled_broken_payment_route.py::test_unknown_user_should_return_404 - AttributeError: 'NoneType' object has no attribute 'id'
+test	Run tests	2026-07-05T04:12:28.8709087Z 1 failed, 308 passed, 1 warning in 3.13s
+test	Run tests	2026-07-05T04:12:28.9656442Z ##[error]Process completed with exit code 1.
+test	Post Checkout repo	﻿2026-07-05T04:12:28.9791861Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+test	Post Checkout repo	2026-07-05T04:12:28.9793051Z Post job cleanup.
+test	Post Checkout repo	2026-07-05T04:12:29.0634172Z [command]/usr/bin/git version
+test	Post Checkout repo	2026-07-05T04:12:29.0711547Z git version 2.54.0
+test	Post Checkout repo	2026-07-05T04:12:29.0752857Z Temporarily overriding HOME='/home/runner/work/_temp/43ee89ee-becc-4f4c-9d3c-90ba9e4dc515' before making global git config changes
+test	Post Checkout repo	2026-07-05T04:12:29.0754303Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Checkout repo	2026-07-05T04:12:29.0759392Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/incidentpilot-sandbox-payments-api/incidentpilot-sandbox-payments-api
+test	Post Checkout repo	2026-07-05T04:12:29.0800515Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Checkout repo	2026-07-05T04:12:29.0839023Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Checkout repo	2026-07-05T04:12:29.1107501Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Checkout repo	2026-07-05T04:12:29.1138594Z http.https://github.com/.extraheader
+test	Post Checkout repo	2026-07-05T04:12:29.1150110Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+test	Post Checkout repo	2026-07-05T04:12:29.1188764Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Checkout repo	2026-07-05T04:12:29.1466703Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Checkout repo	2026-07-05T04:12:29.1507970Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-07-05T04:12:29.1966333Z Cleaning up orphan processes
+test	Complete job	2026-07-05T04:12:29.2270652Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

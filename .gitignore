@@ -36,6 +36,7 @@ htmlcov/
 # Logs, temp files, and reports
 *.log
 !demo/incidents/**/*.log
+!real_tests/**/*.log
 *.tmp
 tmp/
 /reports/
