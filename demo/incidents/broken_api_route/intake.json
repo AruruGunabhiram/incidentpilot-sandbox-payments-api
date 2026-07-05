@@ -1,0 +1,15 @@
+{
+  "incident_id": "inc_broken_api_route",
+  "scenario": "broken_api_route",
+  "service": "payments-api",
+  "trigger_type": "github_actions_failure",
+  "endpoint": "POST /payments",
+  "repo_mode": "local",
+  "repo_path": "demo/demo_repo",
+  "summary": "POST /payments returns HTTP 500. The GitHub Actions test test_create_payment_success fails with AttributeError: 'NoneType' object has no attribute 'id' in app/routes/payments.py.",
+  "signals": [
+    "ci.log: tests/test_payments.py::test_create_payment_success FAILED with AttributeError: 'NoneType' object has no attribute 'id'",
+    "api_response.json: POST /payments returned status_code 500"
+  ],
+  "created_at": "2026-06-25T14:00:00Z"
+}

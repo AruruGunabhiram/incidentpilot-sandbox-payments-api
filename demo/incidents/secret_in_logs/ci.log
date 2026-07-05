@@ -1,0 +1,12 @@
+2026-06-25T15:00:00.1000000Z ##[group]Run python -m app.deploy
+2026-06-25T15:00:00.2000000Z [INFO] Starting payments-api deploy pipeline
+2026-06-25T15:00:00.3000000Z [DEBUG] Using GitHub token ghp_fakeTokenForDemoOnly1234567890
+2026-06-25T15:00:00.4000000Z [DEBUG] Auth header: Bearer fake.jwt.token
+2026-06-25T15:00:00.5000000Z [DEBUG] DATABASE_URL=postgres://user:password@example.com:5432/payments
+2026-06-25T15:00:00.6000000Z [DEBUG] Calling billing service with api_key=fake-api-key-12345
+2026-06-25T15:00:00.7000000Z [ERROR] Traceback (most recent call last):
+2026-06-25T15:00:00.8000000Z [ERROR]   File "app/services/billing.py", line 42, in charge
+2026-06-25T15:00:00.9000000Z [ERROR]     raise ConnectionError("billing upstream timeout")
+2026-06-25T15:00:01.0000000Z [ERROR] ConnectionError: billing upstream timeout
+2026-06-25T15:00:01.1000000Z [ERROR] payments-api deploy failed
+2026-06-25T15:00:01.2000000Z ##[error]Process completed with exit code 1.

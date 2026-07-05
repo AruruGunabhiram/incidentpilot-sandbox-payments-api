@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/gunabhiram/Hackthon/IncidentPilot
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.14.1
+collected 96 items
+
+tests/test_ci_log_reader.py ...........                                  [ 11%]
+tests/test_demo_fixtures.py ..........................                   [ 38%]
+tests/test_health.py .                                                   [ 39%]
+tests/test_path_guard.py ..........                                      [ 50%]
+tests/test_phase3_tools_integration.py ..                                [ 52%]
+tests/test_redactor.py ..........                                        [ 62%]
+tests/test_repo_search.py ...........                                    [ 73%]
+tests/test_report_writer.py ............                                 [ 86%]
+tests/test_schemas.py .............                                      [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/fastapi/testclient.py:1
+  /Users/gunabhiram/Hackthon/IncidentPilot/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 96 passed, 1 warning in 0.39s =========================

@@ -1,0 +1,204 @@
+{
+  "incident_id": "inc_secret_in_logs",
+  "title": "Sensitive values exposed in payments-api CI deploy log",
+  "severity": "SEV2",
+  "affected_service": "payments-api",
+  "status": "awaiting_human_approval",
+  "summary": "The payments-api deploy job failed with ConnectionError: billing upstream timeout. The CI log also exposed four credential-like values (a GitHub token, a Bearer JWT, a DATABASE_URL, and an api_key), all of which were redacted before this report was produced. The credentials should be treated as compromised and rotated.",
+  "confidence": 0.8,
+  "evidence": [
+    {
+      "id": "ev_secret_token",
+      "source": "demo/incidents/secret_in_logs/ci.log",
+      "source_type": "ci_log",
+      "summary": "GitHub token exposed in log (redacted).",
+      "snippet": "[DEBUG] Using GitHub token [REDACTED_SECRET]",
+      "path": "demo/incidents/secret_in_logs/ci.log",
+      "line_start": 3,
+      "line_end": 3,
+      "metadata": {"redaction_applied": "true", "secret_kind": "github_token"}
+    },
+    {
+      "id": "ev_secret_bearer",
+      "source": "demo/incidents/secret_in_logs/ci.log",
+      "source_type": "ci_log",
+      "summary": "Bearer JWT exposed in log (redacted).",
+      "snippet": "[DEBUG] Auth header: [REDACTED_SECRET]",
+      "path": "demo/incidents/secret_in_logs/ci.log",
+      "line_start": 4,
+      "line_end": 4,
+      "metadata": {"redaction_applied": "true", "secret_kind": "bearer_token"}
+    },
+    {
+      "id": "ev_secret_dburl",
+      "source": "demo/incidents/secret_in_logs/ci.log",
+      "source_type": "ci_log",
+      "summary": "Database connection string exposed in log (redacted).",
+      "snippet": "[DEBUG] DATABASE_URL=[REDACTED_SECRET]",
+      "path": "demo/incidents/secret_in_logs/ci.log",
+      "line_start": 5,
+      "line_end": 5,
+      "metadata": {"redaction_applied": "true", "secret_kind": "database_url"}
+    },
+    {
+      "id": "ev_secret_apikey",
+      "source": "demo/incidents/secret_in_logs/ci.log",
+      "source_type": "ci_log",
+      "summary": "API key exposed in log (redacted).",
+      "snippet": "[DEBUG] Calling billing service with api_key=[REDACTED_SECRET]",
+      "path": "demo/incidents/secret_in_logs/ci.log",
+      "line_start": 6,
+      "line_end": 6,
+      "metadata": {"redaction_applied": "true", "secret_kind": "api_key"}
+    },
+    {
+      "id": "ev_error",
+      "source": "demo/incidents/secret_in_logs/ci.log",
+      "source_type": "ci_log",
+      "summary": "Backend failure that caused the deploy to fail.",
+      "snippet": "[ERROR] ConnectionError: billing upstream timeout",
+      "path": "demo/incidents/secret_in_logs/ci.log",
+      "line_start": 10,
+      "line_end": 10,
+      "metadata": {}
+    }
+  ],
+  "needs_human_review": true,
+  "blocked_reasons": [
+    "Report is derived from CI logs that contained sensitive credential-like values; the source must be treated as untrusted input.",
+    "GitHub issue creation is blocked: the report depends on sensitive log content and requires human review before any external sharing.",
+    "Exposed credentials require human-driven rotation that cannot be automated."
+  ],
+  "primary_error": "ConnectionError: billing upstream timeout",
+  "log_finding": {
+    "summary": "Four credential-like values were detected in the CI log and redacted; the deploy failed with a billing upstream ConnectionError.",
+    "confidence": 0.9,
+    "evidence": [
+      {
+        "id": "ev_secret_token",
+        "source": "demo/incidents/secret_in_logs/ci.log",
+        "source_type": "ci_log",
+        "summary": "GitHub token exposed in log (redacted).",
+        "snippet": "[DEBUG] Using GitHub token [REDACTED_SECRET]",
+        "path": "demo/incidents/secret_in_logs/ci.log",
+        "line_start": 3,
+        "line_end": 3,
+        "metadata": {"redaction_applied": "true", "secret_kind": "github_token"}
+      },
+      {
+        "id": "ev_secret_dburl",
+        "source": "demo/incidents/secret_in_logs/ci.log",
+        "source_type": "ci_log",
+        "summary": "Database connection string exposed in log (redacted).",
+        "snippet": "[DEBUG] DATABASE_URL=[REDACTED_SECRET]",
+        "path": "demo/incidents/secret_in_logs/ci.log",
+        "line_start": 5,
+        "line_end": 5,
+        "metadata": {"redaction_applied": "true", "secret_kind": "database_url"}
+      },
+      {
+        "id": "ev_error",
+        "source": "demo/incidents/secret_in_logs/ci.log",
+        "source_type": "ci_log",
+        "summary": "Backend failure that caused the deploy to fail.",
+        "snippet": "[ERROR] ConnectionError: billing upstream timeout",
+        "path": "demo/incidents/secret_in_logs/ci.log",
+        "line_start": 10,
+        "line_end": 10,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": true,
+    "blocked_reasons": [],
+    "primary_error": "ConnectionError: billing upstream timeout",
+    "failing_test": null,
+    "stack_trace_summary": "Deploy raised ConnectionError('billing upstream timeout') from app/services/billing.py:42 during the charge step.",
+    "redactions_applied": 4
+  },
+  "code_finding": null,
+  "root_cause": {
+    "summary": "Two issues: (1) the deploy step printed four secrets into CI logs in plaintext, exposing them; (2) the deploy failed because the billing upstream timed out (ConnectionError). The secret exposure is the security-significant root cause and is the focus of this report.",
+    "confidence": 0.82,
+    "evidence": [
+      {
+        "id": "ev_secret_token",
+        "source": "demo/incidents/secret_in_logs/ci.log",
+        "source_type": "ci_log",
+        "summary": "GitHub token exposed in log (redacted).",
+        "snippet": "[DEBUG] Using GitHub token [REDACTED_SECRET]",
+        "path": "demo/incidents/secret_in_logs/ci.log",
+        "line_start": 3,
+        "line_end": 3,
+        "metadata": {"redaction_applied": "true", "secret_kind": "github_token"}
+      },
+      {
+        "id": "ev_secret_apikey",
+        "source": "demo/incidents/secret_in_logs/ci.log",
+        "source_type": "ci_log",
+        "summary": "API key exposed in log (redacted).",
+        "snippet": "[DEBUG] Calling billing service with api_key=[REDACTED_SECRET]",
+        "path": "demo/incidents/secret_in_logs/ci.log",
+        "line_start": 6,
+        "line_end": 6,
+        "metadata": {"redaction_applied": "true", "secret_kind": "api_key"}
+      }
+    ],
+    "needs_human_review": true,
+    "blocked_reasons": [],
+    "category": "secret_exposure",
+    "supporting_evidence_ids": ["ev_secret_token", "ev_secret_bearer", "ev_secret_dburl", "ev_secret_apikey"],
+    "alternatives": ["Treat only the ConnectionError as the incident and the secret exposure as a separate security ticket."]
+  },
+  "fix_plan": {
+    "summary": "Rotate the exposed credentials and stop printing secrets to CI logs; separately, harden the billing call against upstream timeouts.",
+    "confidence": 0.75,
+    "evidence": [
+      {
+        "id": "ev_secret_token",
+        "source": "demo/incidents/secret_in_logs/ci.log",
+        "source_type": "ci_log",
+        "summary": "GitHub token exposed in log (redacted).",
+        "snippet": "[DEBUG] Using GitHub token [REDACTED_SECRET]",
+        "path": "demo/incidents/secret_in_logs/ci.log",
+        "line_start": 3,
+        "line_end": 3,
+        "metadata": {"redaction_applied": "true", "secret_kind": "github_token"}
+      }
+    ],
+    "needs_human_review": true,
+    "blocked_reasons": [],
+    "patch_strategy": "mitigation",
+    "steps": [
+      "Rotate the leaked GitHub token, Bearer JWT, database credentials, and api_key.",
+      "Remove the [DEBUG] statements that print credentials; reference them as masked CI secrets instead.",
+      "Add a timeout/retry guard around the billing upstream call to handle ConnectionError gracefully."
+    ],
+    "regression_tests": [],
+    "rollback_plan": ["No code rollback required for rotation; revert workflow/debug-logging changes if the deploy breaks."],
+    "risks": ["Credential rotation may briefly interrupt the deploy pipeline until new secrets propagate."]
+  },
+  "safety_review": {
+    "summary": "Four secrets were detected and redacted (redactions_applied=4). The redacted report is safe to display. A GitHub issue is NOT approved because the report depends on sensitive log content and the exposed credentials must be rotated by a human first.",
+    "confidence": 0.82,
+    "evidence": [],
+    "needs_human_review": true,
+    "blocked_reasons": [
+      "Report depends on sensitive CI log content; external sharing requires human review."
+    ],
+    "approved_for_display": true,
+    "approved_for_github_issue": false,
+    "approved_for_pr": false,
+    "risk_level": "high",
+    "secrets_detected": true,
+    "redactions_applied": 4,
+    "secret_scan_passed": true,
+    "secrets_redacted": true,
+    "repo_paths_verified": true,
+    "confidence_above_threshold": true,
+    "human_approval_required": true,
+    "no_direct_production_change": true,
+    "required_human_action": "Rotate the four exposed credentials, then review the redacted report before approving any GitHub issue."
+  },
+  "created_at": "2026-06-25T15:05:00Z",
+  "updated_at": "2026-06-25T15:05:00Z"
+}

@@ -1,0 +1,7 @@
+2026-06-27T09:00:00.1000000Z ##[group]Run python -m app.deploy
+2026-06-27T09:00:00.2000000Z [INFO] Starting payments-api deploy pipeline
+2026-06-27T09:00:00.3000000Z [INFO] Connecting to payment gateway
+2026-06-27T09:00:02.0000000Z [INFO] Running post-deploy health check
+2026-06-27T09:00:05.0000000Z [ERROR] RuntimeError: deploy aborted: health check did not pass
+2026-06-27T09:00:05.1000000Z [ERROR] payments-api deploy failed
+2026-06-27T09:00:05.2000000Z ##[error]Process completed with exit code 1.

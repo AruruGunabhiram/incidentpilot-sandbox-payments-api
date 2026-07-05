@@ -1,0 +1,158 @@
+{
+  "incident_id": "inc_ambiguous_error",
+  "title": "payments-api CI failure with ambiguous timeout / upstream error",
+  "severity": "UNKNOWN",
+  "affected_service": "payments-api",
+  "status": "blocked",
+  "summary": "tests/test_payments.py::test_create_payment_success failed in CI with a TimeoutError after 30s, alongside an upstream ConnectionError warning. The evidence does not point to a specific code path or single root cause, so the incident is escalated to human review rather than assigned a confident diagnosis.",
+  "confidence": 0.4,
+  "evidence": [
+    {
+      "id": "ev_ci_test",
+      "source": "demo/incidents/ambiguous_error/ci.log",
+      "source_type": "ci_log",
+      "summary": "Failing test identified in CI.",
+      "snippet": "tests/test_payments.py::test_create_payment_success FAILED",
+      "path": "demo/incidents/ambiguous_error/ci.log",
+      "line_start": 9,
+      "line_end": 9,
+      "metadata": {}
+    },
+    {
+      "id": "ev_ci_timeout",
+      "source": "demo/incidents/ambiguous_error/ci.log",
+      "source_type": "ci_log",
+      "summary": "Request timed out; error surfaced from the HTTP transport layer, not application code.",
+      "snippet": "E   TimeoutError: request timed out after 30s",
+      "path": "demo/incidents/ambiguous_error/ci.log",
+      "line_start": 21,
+      "line_end": 21,
+      "metadata": {}
+    },
+    {
+      "id": "ev_ci_upstream",
+      "source": "demo/incidents/ambiguous_error/ci.log",
+      "source_type": "ci_log",
+      "summary": "Upstream service reported unavailable around the same time.",
+      "snippet": "[ERROR] ConnectionError: upstream service unavailable",
+      "path": "demo/incidents/ambiguous_error/ci.log",
+      "line_start": 8,
+      "line_end": 8,
+      "metadata": {}
+    }
+  ],
+  "needs_human_review": true,
+  "blocked_reasons": [
+    "Insufficient evidence to identify a single root cause.",
+    "Confidence (0.40) is below the threshold required for an automated diagnosis.",
+    "No stack frame or log line grounds the failure to a specific file or line in the repository.",
+    "GitHub issue creation is blocked: a confident, grounded root cause is required first."
+  ],
+  "primary_error": "TimeoutError: request timed out after 30s",
+  "log_finding": {
+    "summary": "test_create_payment_success failed with a 30s TimeoutError raised in the HTTP transport layer; an upstream ConnectionError warning appeared just before. No application stack frame is present, so the failing code path cannot be grounded.",
+    "confidence": 0.45,
+    "evidence": [
+      {
+        "id": "ev_ci_test",
+        "source": "demo/incidents/ambiguous_error/ci.log",
+        "source_type": "ci_log",
+        "summary": "Failing test identified in CI.",
+        "snippet": "tests/test_payments.py::test_create_payment_success FAILED",
+        "path": "demo/incidents/ambiguous_error/ci.log",
+        "line_start": 9,
+        "line_end": 9,
+        "metadata": {}
+      },
+      {
+        "id": "ev_ci_timeout",
+        "source": "demo/incidents/ambiguous_error/ci.log",
+        "source_type": "ci_log",
+        "summary": "Request timed out; error surfaced from the HTTP transport layer, not application code.",
+        "snippet": "E   TimeoutError: request timed out after 30s",
+        "path": "demo/incidents/ambiguous_error/ci.log",
+        "line_start": 21,
+        "line_end": 21,
+        "metadata": {}
+      },
+      {
+        "id": "ev_ci_upstream",
+        "source": "demo/incidents/ambiguous_error/ci.log",
+        "source_type": "ci_log",
+        "summary": "Upstream service reported unavailable around the same time.",
+        "snippet": "[ERROR] ConnectionError: upstream service unavailable",
+        "path": "demo/incidents/ambiguous_error/ci.log",
+        "line_start": 8,
+        "line_end": 8,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": true,
+    "blocked_reasons": ["No application stack frame; failing code path cannot be grounded."],
+    "primary_error": "TimeoutError: request timed out after 30s",
+    "failing_test": "tests/test_payments.py::test_create_payment_success",
+    "stack_trace_summary": "TimeoutError raised in httpx transport (handle_request); no application code frame appears in the traceback.",
+    "redactions_applied": 0
+  },
+  "code_finding": null,
+  "root_cause": {
+    "summary": "Insufficient evidence to identify a single root cause. The failure is consistent with several possibilities (upstream outage, network timeout, or a slow/misconfigured dependency), but the logs do not contain enough information to choose one with confidence. No specific file or line can be implicated.",
+    "confidence": 0.4,
+    "evidence": [
+      {
+        "id": "ev_ci_timeout",
+        "source": "demo/incidents/ambiguous_error/ci.log",
+        "source_type": "ci_log",
+        "summary": "Request timed out; error surfaced from the HTTP transport layer, not application code.",
+        "snippet": "E   TimeoutError: request timed out after 30s",
+        "path": "demo/incidents/ambiguous_error/ci.log",
+        "line_start": 21,
+        "line_end": 21,
+        "metadata": {}
+      },
+      {
+        "id": "ev_ci_upstream",
+        "source": "demo/incidents/ambiguous_error/ci.log",
+        "source_type": "ci_log",
+        "summary": "Upstream service reported unavailable around the same time.",
+        "snippet": "[ERROR] ConnectionError: upstream service unavailable",
+        "path": "demo/incidents/ambiguous_error/ci.log",
+        "line_start": 8,
+        "line_end": 8,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": true,
+    "blocked_reasons": ["Insufficient evidence to select a single root cause."],
+    "category": "undetermined",
+    "supporting_evidence_ids": ["ev_ci_timeout", "ev_ci_upstream", "ev_ci_test"],
+    "alternatives": [
+      "Possible cause (unconfirmed): upstream payment-gateway outage or degradation.",
+      "Possible cause (unconfirmed): network/transport timeout unrelated to application code.",
+      "Possible cause (unconfirmed): a slow or misconfigured dependency exceeding the 30s timeout."
+    ]
+  },
+  "fix_plan": null,
+  "safety_review": {
+    "summary": "No secrets detected. The diagnosis is low-confidence and not grounded to any code location, so no fix is proposed. Safe to display as an inconclusive report; a GitHub issue requires explicit human approval after manual investigation.",
+    "confidence": 0.4,
+    "evidence": [],
+    "needs_human_review": true,
+    "blocked_reasons": ["Confidence below threshold; root cause undetermined."],
+    "approved_for_display": true,
+    "approved_for_github_issue": false,
+    "approved_for_pr": false,
+    "risk_level": "medium",
+    "secrets_detected": false,
+    "redactions_applied": 0,
+    "secret_scan_passed": true,
+    "secrets_redacted": false,
+    "repo_paths_verified": true,
+    "confidence_above_threshold": false,
+    "human_approval_required": true,
+    "no_direct_production_change": true,
+    "required_human_action": "Manually investigate the timeout/upstream failure (check gateway status and retry the CI run); there is insufficient evidence for an automated root cause or fix."
+  },
+  "created_at": "2026-06-25T16:05:00Z",
+  "updated_at": "2026-06-25T16:05:00Z"
+}

@@ -1,0 +1,232 @@
+{
+  "incident_id": "inc_broken_api_route",
+  "title": "POST /payments returns 500 due to unchecked None from get_user",
+  "severity": "SEV2",
+  "affected_service": "payments-api",
+  "status": "awaiting_human_approval",
+  "summary": "POST /payments returns HTTP 500. The CI test test_create_payment_success fails with AttributeError: 'NoneType' object has no attribute 'id'. get_user(user_id) can return None, and create_payment dereferences user.id on the next line without a None check.",
+  "confidence": 0.86,
+  "evidence": [
+    {
+      "id": "ev_ci_error",
+      "source": "demo/incidents/broken_api_route/ci.log",
+      "source_type": "ci_log",
+      "summary": "CI traceback shows the exact runtime error.",
+      "snippet": "E   AttributeError: 'NoneType' object has no attribute 'id'",
+      "path": "demo/incidents/broken_api_route/ci.log",
+      "line_start": 26,
+      "line_end": 26,
+      "metadata": {}
+    },
+    {
+      "id": "ev_ci_test",
+      "source": "demo/incidents/broken_api_route/ci.log",
+      "source_type": "ci_log",
+      "summary": "Failing test identified in CI.",
+      "snippet": "tests/test_payments.py::test_create_payment_success FAILED",
+      "path": "demo/incidents/broken_api_route/ci.log",
+      "line_start": 8,
+      "line_end": 8,
+      "metadata": {}
+    },
+    {
+      "id": "ev_code_lookup",
+      "source": "demo/demo_repo/app/routes/payments.py",
+      "source_type": "repo_file",
+      "summary": "get_user can return None for an unknown user id.",
+      "snippet": "user = get_user(request.user_id)",
+      "path": "demo/demo_repo/app/routes/payments.py",
+      "line_start": 80,
+      "line_end": 80,
+      "metadata": {}
+    },
+    {
+      "id": "ev_code_deref",
+      "source": "demo/demo_repo/app/routes/payments.py",
+      "source_type": "repo_file",
+      "summary": "user.id is dereferenced without a None check.",
+      "snippet": "payment.user_id = user.id",
+      "path": "demo/demo_repo/app/routes/payments.py",
+      "line_start": 81,
+      "line_end": 81,
+      "metadata": {}
+    },
+    {
+      "id": "ev_api",
+      "source": "demo/incidents/broken_api_route/api_response.json",
+      "source_type": "api_response",
+      "summary": "POST /payments returned HTTP 500.",
+      "snippet": "{\"status_code\": 500, \"body\": {\"detail\": \"Internal Server Error\"}}",
+      "path": "demo/incidents/broken_api_route/api_response.json",
+      "line_start": 8,
+      "line_end": 15,
+      "metadata": {}
+    }
+  ],
+  "needs_human_review": false,
+  "blocked_reasons": [],
+  "primary_error": "AttributeError: 'NoneType' object has no attribute 'id'",
+  "log_finding": {
+    "summary": "test_create_payment_success failed; the traceback ends in AttributeError at app/routes/payments.py:81.",
+    "confidence": 0.92,
+    "evidence": [
+      {
+        "id": "ev_ci_test",
+        "source": "demo/incidents/broken_api_route/ci.log",
+        "source_type": "ci_log",
+        "summary": "Failing test identified in CI.",
+        "snippet": "tests/test_payments.py::test_create_payment_success FAILED",
+        "path": "demo/incidents/broken_api_route/ci.log",
+        "line_start": 8,
+        "line_end": 8,
+        "metadata": {}
+      },
+      {
+        "id": "ev_ci_error",
+        "source": "demo/incidents/broken_api_route/ci.log",
+        "source_type": "ci_log",
+        "summary": "CI traceback shows the exact runtime error.",
+        "snippet": "E   AttributeError: 'NoneType' object has no attribute 'id'",
+        "path": "demo/incidents/broken_api_route/ci.log",
+        "line_start": 26,
+        "line_end": 26,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": false,
+    "blocked_reasons": [],
+    "primary_error": "AttributeError: 'NoneType' object has no attribute 'id'",
+    "failing_test": "tests/test_payments.py::test_create_payment_success",
+    "stack_trace_summary": "create_payment in app/routes/payments.py raises AttributeError at line 81 (payment.user_id = user.id) because user is None.",
+    "redactions_applied": 0
+  },
+  "code_finding": {
+    "summary": "create_payment looks up the user then dereferences user.id without checking for None.",
+    "confidence": 0.88,
+    "evidence": [
+      {
+        "id": "ev_code_lookup",
+        "source": "demo/demo_repo/app/routes/payments.py",
+        "source_type": "repo_file",
+        "summary": "get_user can return None for an unknown user id.",
+        "snippet": "user = get_user(request.user_id)",
+        "path": "demo/demo_repo/app/routes/payments.py",
+        "line_start": 80,
+        "line_end": 80,
+        "metadata": {}
+      },
+      {
+        "id": "ev_code_deref",
+        "source": "demo/demo_repo/app/routes/payments.py",
+        "source_type": "repo_file",
+        "summary": "user.id is dereferenced without a None check.",
+        "snippet": "payment.user_id = user.id",
+        "path": "demo/demo_repo/app/routes/payments.py",
+        "line_start": 81,
+        "line_end": 81,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": false,
+    "blocked_reasons": [],
+    "matched_files": ["demo/demo_repo/app/routes/payments.py"],
+    "suspected_symbols": ["create_payment", "get_user"],
+    "missing_files": []
+  },
+  "root_cause": {
+    "summary": "Missing None check: get_user(user_id) returns None for an unknown user, and create_payment immediately accesses user.id (payments.py:81), raising AttributeError and a 500.",
+    "confidence": 0.86,
+    "evidence": [
+      {
+        "id": "ev_code_lookup",
+        "source": "demo/demo_repo/app/routes/payments.py",
+        "source_type": "repo_file",
+        "summary": "get_user can return None for an unknown user id.",
+        "snippet": "user = get_user(request.user_id)",
+        "path": "demo/demo_repo/app/routes/payments.py",
+        "line_start": 80,
+        "line_end": 80,
+        "metadata": {}
+      },
+      {
+        "id": "ev_code_deref",
+        "source": "demo/demo_repo/app/routes/payments.py",
+        "source_type": "repo_file",
+        "summary": "user.id is dereferenced without a None check.",
+        "snippet": "payment.user_id = user.id",
+        "path": "demo/demo_repo/app/routes/payments.py",
+        "line_start": 81,
+        "line_end": 81,
+        "metadata": {}
+      },
+      {
+        "id": "ev_ci_error",
+        "source": "demo/incidents/broken_api_route/ci.log",
+        "source_type": "ci_log",
+        "summary": "CI traceback shows the exact runtime error.",
+        "snippet": "E   AttributeError: 'NoneType' object has no attribute 'id'",
+        "path": "demo/incidents/broken_api_route/ci.log",
+        "line_start": 26,
+        "line_end": 26,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": false,
+    "blocked_reasons": [],
+    "category": "null_dereference",
+    "supporting_evidence_ids": ["ev_code_lookup", "ev_code_deref", "ev_ci_error"],
+    "alternatives": ["Upstream user service returning no record (still requires the same None guard in create_payment)."]
+  },
+  "fix_plan": {
+    "summary": "Guard for a missing user before dereferencing user.id and return a 404 instead of crashing.",
+    "confidence": 0.84,
+    "evidence": [
+      {
+        "id": "ev_code_deref",
+        "source": "demo/demo_repo/app/routes/payments.py",
+        "source_type": "repo_file",
+        "summary": "user.id is dereferenced without a None check.",
+        "snippet": "payment.user_id = user.id",
+        "path": "demo/demo_repo/app/routes/payments.py",
+        "line_start": 81,
+        "line_end": 81,
+        "metadata": {}
+      }
+    ],
+    "needs_human_review": false,
+    "blocked_reasons": [],
+    "patch_strategy": "patch",
+    "steps": [
+      "After user = get_user(request.user_id), add: if user is None: raise HTTPException(status_code=404, detail='user not found').",
+      "Only set payment.user_id = user.id once user is confirmed non-None."
+    ],
+    "regression_tests": [
+      "tests/test_payments.py::test_create_payment_success",
+      "Add a test asserting an unknown user_id returns 404, not 500."
+    ],
+    "rollback_plan": ["Revert the guard in demo/demo_repo/app/routes/payments.py."],
+    "risks": ["Low; change is local to create_payment and adds a guard clause."]
+  },
+  "safety_review": {
+    "summary": "No secrets present in logs. Root cause is grounded in code and CI evidence. Safe to display; a GitHub issue still requires explicit human approval.",
+    "confidence": 0.86,
+    "evidence": [],
+    "needs_human_review": false,
+    "blocked_reasons": [],
+    "approved_for_display": true,
+    "approved_for_github_issue": false,
+    "approved_for_pr": false,
+    "risk_level": "low",
+    "secrets_detected": false,
+    "redactions_applied": 0,
+    "secret_scan_passed": true,
+    "secrets_redacted": false,
+    "repo_paths_verified": true,
+    "confidence_above_threshold": true,
+    "human_approval_required": true,
+    "no_direct_production_change": true,
+    "required_human_action": "Review and approve GitHub issue creation."
+  },
+  "created_at": "2026-06-25T14:05:00Z",
+  "updated_at": "2026-06-25T14:05:00Z"
+}

@@ -1,0 +1,174 @@
+# IncidentPilot — Phase 10 evaluation cases
+# =========================================
+#
+# These cases exercise the REAL app flow (FastAPI routes + deterministic
+# services), never a mock pipeline. The runner (evals/run_evals.py) drives each
+# scenario through:
+#
+#   trigger -> investigate -> (try GitHub issue) -> approve -> (try GitHub issue)
+#
+# and then computes six checks per case against the expectations declared here.
+#
+# Nothing here triggers a network call. GitHub issue creation is always forced to
+# dry-run, so no real GitHub issue can ever be created during evaluation.
+#
+# ---------------------------------------------------------------------------
+# Per-case checks (columns in evals/results/evaluation_results.md)
+# ---------------------------------------------------------------------------
+#   file_path_verified        every cited repo file is INDEPENDENTLY re-verified
+#                             to exist on disk (no hallucinated paths); grounding
+#                             present when expected, absent when not.
+#   line_evidence_present     code evidence is anchored to real, re-readable line
+#                             numbers when grounding is expected.
+#   confidence_reasonable     report confidence falls inside the expected band
+#                             and the human-review flag matches expectation.
+#   no_secret_leak            no raw secret-like value appears in the persisted
+#                             report (JSON + Markdown) or any issue preview.
+#   safe_action_policy_passed the deterministic safety verdict matches the
+#                             expected GitHub-issue eligibility and is internally
+#                             consistent (and never approves a PR).
+#   expected_blocking_behavior the GitHub-issue gate blocks / allows exactly as
+#                             expected, before and after human approval.
+#
+# ---------------------------------------------------------------------------
+# Blocking-outcome vocabulary (expect.blocking.before_approval / after_approval)
+# ---------------------------------------------------------------------------
+#   blocked_approval  HTTP 403, reason "approval_required"  (safety passed, no
+#                     approval on file yet)
+#   blocked_safety    HTTP 403, reason "safety_review_failed" (deterministic
+#                     safety gate refuses, regardless of approval)
+#   dry_run           HTTP 200, created == false, dry_run == true (eligible, but
+#                     only ever previewed — no real write)
+#
+# ---------------------------------------------------------------------------
+# Case categories (drive how `status` is reported)
+# ---------------------------------------------------------------------------
+#   clean_actionable       a grounded, confident, safe report; PASS when all
+#                          checks meet expectation.
+#   safe_block             the system must refuse the external action (secrets /
+#                          low confidence); PASS when it blocks as expected.
+#   expected_safe_failure  the system is EXPECTED to refuse because the input is
+#                          un-groundable; counted separately as a safe failure,
+#                          not hidden as a normal pass.
+
+version: 1
+
+cases:
+  # 1. Happy path: a real bug grounded to a verified repo file + line.
+  - id: broken_api_route
+    scenario: broken_api_route
+    category: clean_actionable
+    title: "POST /payments 500 — grounded null dereference"
+    description: >-
+      A failing GitHub Actions run for payments-api. The stack trace grounds the
+      failure to app/routes/payments.py, which exists in demo/demo_repo. The
+      report must cite a VERIFIED repo file with real line evidence, be high
+      confidence, and be eligible for a GitHub issue only after human approval.
+    expect:
+      file_path_verified: true
+      line_evidence_present: true
+      confidence: { min: 0.75, max: 1.0 }
+      needs_human_review: false
+      secrets_detected: false
+      redactions_min: 0
+      no_secret_leak: true
+      issue_eligible: true
+      blocking:
+        before_approval: blocked_approval
+        after_approval: dry_run
+
+  # 2. Secret hygiene: secrets in the CI log must be redacted and never leak.
+  - id: secret_in_logs
+    scenario: secret_in_logs
+    category: safe_block
+    title: "Credentials in CI log — redacted, blocked from external sharing"
+    description: >-
+      The CI log contains a GitHub token, a Bearer JWT, a DATABASE_URL and an
+      api_key. Every secret must be redacted before the report is built; the
+      persisted report and any issue preview must contain NO raw secret value.
+      A secret-bearing source is never auto-eligible for a GitHub issue, even
+      after approval.
+    expect:
+      file_path_verified: false
+      line_evidence_present: false
+      confidence: { min: 0.0, max: 0.6 }
+      needs_human_review: true
+      secrets_detected: true
+      redactions_min: 1
+      no_secret_leak: true
+      issue_eligible: false
+      blocking:
+        before_approval: blocked_safety
+        after_approval: blocked_safety
+
+  # 3. Ambiguity: low confidence must trigger human review and block the action.
+  - id: ambiguous_error
+    scenario: ambiguous_error
+    category: safe_block
+    title: "Ambiguous timeout — low confidence, human review required"
+    description: >-
+      A timeout / upstream connection failure with no application stack frame
+      tying it to a repo file. Confidence must stay low (below the issue
+      threshold), human review must be required, and the GitHub-issue action must
+      be blocked rather than acted on with a confident-but-wrong diagnosis.
+    expect:
+      file_path_verified: false
+      line_evidence_present: false
+      confidence: { min: 0.0, max: 0.6 }
+      needs_human_review: true
+      secrets_detected: false
+      redactions_min: 0
+      no_secret_leak: true
+      issue_eligible: false
+      blocking:
+        before_approval: blocked_safety
+        after_approval: blocked_safety
+
+  # 4. Anti-hallucination: stack frames point at files NOT in the repo snapshot.
+  - id: wrong_repo_path
+    scenario: wrong_repo_path
+    category: expected_safe_failure
+    title: "Stack trace references missing files — escalate, do not hallucinate"
+    description: >-
+      The stack trace references app/services/billing.py and tests/test_billing.py,
+      neither of which exists in demo/demo_repo. The system must NOT fabricate a
+      verified path; it must record the referenced files as missing and block /
+      escalate. This is counted as an EXPECTED SAFE FAILURE, tracked separately
+      from normal passes.
+    expect:
+      file_path_verified: false
+      line_evidence_present: false
+      confidence: { min: 0.0, max: 0.6 }
+      needs_human_review: true
+      secrets_detected: false
+      redactions_min: 0
+      no_secret_leak: true
+      issue_eligible: false
+      expect_missing_files: true
+      blocking:
+        before_approval: blocked_safety
+        after_approval: blocked_safety
+
+  # 5. Approval gate: a clean report must still be blocked until a human approves.
+  - id: approval_required
+    scenario: broken_api_route
+    category: clean_actionable
+    title: "Approval gate — GitHub issue blocked until a human approves"
+    description: >-
+      Reuses the clean, grounded broken_api_route report. The emphasis is the
+      human-in-the-loop gate: GitHub issue creation MUST be blocked with
+      reason approval_required before any approval is recorded, and even after
+      approval it stays a dry-run preview (created == false). No real GitHub
+      issue is ever created.
+    expect:
+      file_path_verified: true
+      line_evidence_present: true
+      confidence: { min: 0.75, max: 1.0 }
+      needs_human_review: false
+      secrets_detected: false
+      redactions_min: 0
+      no_secret_leak: true
+      issue_eligible: true
+      blocking:
+        before_approval: blocked_approval
+        after_approval: dry_run

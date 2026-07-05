@@ -1,0 +1,14 @@
+{
+  "incident_id": "inc_wrong_repo_path",
+  "scenario": "wrong_repo_path",
+  "service": "payments-api",
+  "trigger_type": "github_actions_failure",
+  "repo_mode": "local",
+  "repo_path": "demo/demo_repo",
+  "summary": "A payments-api CI run failed with an AttributeError whose stack trace points at app/services/billing.py and tests/test_billing.py. Neither file exists in the searched repository snapshot, so the failure cannot be grounded to a verified repository path and must not be turned into a GitHub issue.",
+  "signals": [
+    "ci.log: tests/test_billing.py::test_charge_card FAILED with AttributeError: 'NoneType' object has no attribute 'submit'",
+    "ci.log: stack frames reference app/services/billing.py, which does not exist in demo/demo_repo"
+  ],
+  "created_at": "2026-06-27T10:00:00Z"
+}

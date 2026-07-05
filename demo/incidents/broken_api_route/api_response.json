@@ -1,0 +1,17 @@
+{
+  "endpoint": "POST /payments",
+  "request": {
+    "user_id": "user_123",
+    "amount": 1000,
+    "currency": "USD"
+  },
+  "response": {
+    "status_code": 500,
+    "headers": {
+      "content-type": "application/json"
+    },
+    "body": {
+      "detail": "Internal Server Error"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+# Python environments
+.venv/
+venv/
+env/
+
+# Local secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.secret
+
+# Python caches and artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+
+# Test, type-check, and coverage output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Databases and local storage
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs, temp files, and reports
+*.log
+!demo/incidents/**/*.log
+*.tmp
+tmp/
+/reports/
+docs/generated/
+app/storage/reports/*
+!app/storage/reports/.gitkeep
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Graphify output
+graphify-out/

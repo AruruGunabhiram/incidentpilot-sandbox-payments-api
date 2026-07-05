@@ -1,0 +1,51 @@
+# Repository and dependency internals
+.git/
+.venv/
+venv/
+env/
+node_modules/
+build/
+dist/
+
+# Python caches and generated artifacts
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.py[cod]
+
+# Local secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.secret
+
+# Local databases, logs, reports, and temp output
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.tmp
+tmp/
+reports/
+app/storage/reports/
+demo/incidents/**/raw/
+
+# Graphify local cache/cost files
+graphify-out/cache/
+graphify-out/.graphify_*.json
+graphify-out/*cost*.json
+graphify-out/manifest.json
+tests/graphify-out/
+
+# Temporary code-only Graphify run.
+# Remove these once GEMINI_API_KEY or another LLM key is available so docs
+# and dependency metadata can be included in graph context.
+*.md
+*.txt
+*.rst
+docs/
+requirements.txt

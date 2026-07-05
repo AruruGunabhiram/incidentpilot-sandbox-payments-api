@@ -1,0 +1,14 @@
+{
+  "incident_id": "inc_path_traversal",
+  "scenario": "path_traversal",
+  "service": "payments-api",
+  "trigger_type": "github_actions_failure",
+  "repo_mode": "local",
+  "repo_path": "demo/demo_repo",
+  "summary": "A payments-api CI run failed while loading configuration, and the stack trace contains a path-traversal file reference (../../../../etc/passwd.py). The path guard must reject this traversal so no file outside the demo repository root is ever read, and the failure must not be turned into a GitHub issue.",
+  "signals": [
+    "ci.log: tests/test_config_loader.py::test_loads_config FAILED with PermissionError on /etc/passwd",
+    "ci.log: stack frame references ../../../../etc/passwd.py (path traversal outside the repo root)"
+  ],
+  "created_at": "2026-06-27T11:00:00Z"
+}
